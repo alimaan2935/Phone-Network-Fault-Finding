@@ -17,6 +17,7 @@ public interface TestAPI {
 	 * 
 	 * @param dialler The phone number that initiated the calls.
 	 * @return List of all the phone numbers called by dialler.
+	 *         The list will contain duplicates of the receiver if the dialler called the receiver multiple times.
 	 */
 	List<Long> called(long dialler);
 	
@@ -27,6 +28,7 @@ public interface TestAPI {
 	 * @param startTime Start of time period.
 	 * @param endTime End of time period.
 	 * @return List of all the phone numbers called by dialler between start and end time.
+	 *         The list will contain duplicates of the receiver if the dialler called the receiver multiple times.
 	 */
 	List<Long> called(long dialler, LocalDateTime startTime, LocalDateTime endTime);
 	
@@ -35,6 +37,7 @@ public interface TestAPI {
 	 * 
 	 * @param receiver The phone number that received the calls.
 	 * @return List of all the phone numbers that called the receiver.
+	 *         The list will contain duplicates of the caller if they called the receiver multiple times.
 	 */
 	List<Long> callers(long receiver);
 	
@@ -45,6 +48,7 @@ public interface TestAPI {
 	 * @param startTime Start of time period.
 	 * @param endTime End of time period.
 	 * @return List of all the phone numbers that called the receiver between start and end time.
+	 *         The list will contain duplicates of the caller if they called the receiver multiple times.
 	 */
 	List<Long> callers(long receiver, LocalDateTime startTime, LocalDateTime endTime);
 	
@@ -90,6 +94,7 @@ public interface TestAPI {
 	 * Tests search 4 from the assignment specification.
 	 * 
 	 * @return The identifier of the switch that had the most connections.
+	 *         If multiple switches have the most connections, the smallest switch identifier is returned.
 	 */
 	int maxConnections();
 	
@@ -99,6 +104,7 @@ public interface TestAPI {
 	 * @param startTime Start of time period.
 	 * @param endTime End of time period.
 	 * @return The identifier of the switch that had the most connections between start and end time.
+	 *         If multiple switches have the most connections, the smallest switch identifier is returned.
 	 */
 	int maxConnections(LocalDateTime startTime, LocalDateTime endTime);
 	
@@ -106,6 +112,7 @@ public interface TestAPI {
 	 * Tests search 5 from the assignment specification.
 	 * 
 	 * @return The identifier of the switch that had the fewest connections.
+	 *         If multiple switches have the fewest connections, the smallest switch identifier is returned.
 	 */
 	int minConnections();
 	
@@ -115,6 +122,7 @@ public interface TestAPI {
 	 * @param startTime Start of time period.
 	 * @param endTime End of time period.
 	 * @return The identifier of the switch that had the fewest connections between start and end time.
+	 *         If multiple switches have the fewest connections, the smallest switch identifier is returned.
 	 */
 	int minConnections(LocalDateTime startTime, LocalDateTime endTime);
 	
